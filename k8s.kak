@@ -57,13 +57,13 @@ define-command k8s-get-pods -params .. %{
   k8s-highlights
 }
 
-define-command k8s-switch-ctx -menu -shell-script-candidates 'kubectl config get-contexts -o name' -params 1 %{
+define-command kubectx -menu -shell-script-candidates 'kubectl config get-contexts -o name' -params 1 %{
   echo %sh{
     kubectl config use-context $1
   }
 }
 
-define-command k8s-switch-ns -menu -shell-script-candidates 'kubectl get namespaces --no-headers -o custom-columns=NAME:.metadata.name' -params 1 %{
+define-command kubens -menu -shell-script-candidates 'kubectl get namespaces --no-headers -o custom-columns=NAME:.metadata.name' -params 1 %{
   echo %sh{
     kubectl config set-context --current --namespace $1
   }
